@@ -1,4 +1,6 @@
 Lab2/data
 Lab2/__pycache__
+Lab2/yolov8n.pt
+runs
 *.zip
 env
