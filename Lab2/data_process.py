@@ -62,6 +62,7 @@ class DataProcess():
         os.makedirs(os.path.join(self.output_dir, 'images', 'val'), exist_ok=True)
         os.makedirs(os.path.join(self.output_dir, 'labels', 'train'), exist_ok=True)
         os.makedirs(os.path.join(self.output_dir, 'labels', 'val'), exist_ok=True)
+        os.makedirs(os.path.join(self.output_dir, 'runs'), exist_ok=True)
 
     def _convert_to_yolo_format(self, size, box):
         dw = 1. / size[0]
