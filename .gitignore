@@ -6,3 +6,6 @@ runs
 *.pt
 *.zip
 env
+.vscode
+venv
+yolo*
