@@ -18,7 +18,7 @@ class DataProcess():
         for xml_file in os.listdir(self.annotations_dir):
             if xml_file.endswith('.xml'):
                 xml_path = os.path.join(self.annotations_dir, xml_file)
-                self._parse_xml(xml_path, annotations)
+                annotations = self._parse_xml(xml_path, annotations.copy())
 
                 image_file = xml_file.replace('.xml', '.png')
                 image_path = os.path.join(self.images_dir, image_file)
