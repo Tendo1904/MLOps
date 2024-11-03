@@ -2,8 +2,8 @@ Lab2/data/annotations
 Lab2/data/images
 Lab2/data/face-mask-detection-yolo
 Lab2/__pycache__
-Lab2/yolov8n.pt
 runs
+*.pt
 *.zip
 env
 .vscode
