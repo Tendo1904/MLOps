@@ -6,3 +6,6 @@ Lab2/yolov8n.pt
 runs
 *.zip
 env
+.vscode
+venv
+yolo*

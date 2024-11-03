@@ -1,9 +1,7 @@
 import numpy as np
-import pandas as pd
 import os
 import shutil
 import xml.etree.ElementTree as ET
-import matplotlib.pyplot as plt
 import cv2
 from sklearn.preprocessing import LabelEncoder
 
@@ -11,10 +9,10 @@ class DataProcess():
     def __init__(self) -> None:
         image_data = []
         annotations = []
-        
+
         self.annotations_dir = 'data/annotations/'
         self.images_dir = 'data/images/'
-        self.output_dir = 'data/face-mask-detection-yolo'
+        self.output_dir = 'data/face-mask-detection-yolo/'
         self._create_yolo_dirs()
 
         for xml_file in os.listdir(self.annotations_dir):
@@ -26,8 +24,9 @@ class DataProcess():
                 image_path = os.path.join(self.images_dir, image_file)
 
                 if os.path.exists(image_path):
+                    cv2.imwrite(image_path, cv2.imread(image_path))
                     image = cv2.imread(image_path)
-                    image = cv2.resize(image, (128,128))
+                    image = cv2.resize(image, (128, 128))
 
                     image_flatten = image.flatten()
 
@@ -56,7 +55,7 @@ class DataProcess():
             objects.append((class_name, xmin, ymin, xmax, ymax))
         annotations.append((file_name, objects))
         return annotations
-    
+
     def _create_yolo_dirs(self) -> None:
         os.makedirs(os.path.join(self.output_dir, 'images', 'train'), exist_ok=True)
         os.makedirs(os.path.join(self.output_dir, 'images', 'val'), exist_ok=True)
@@ -64,18 +63,18 @@ class DataProcess():
         os.makedirs(os.path.join(self.output_dir, 'labels', 'val'), exist_ok=True)
 
     def _convert_to_yolo_format(self, size, box):
-        dw = 1. / size[0]
-        dh = 1. / size[1]
-        x = (box[0] + box[2]) / 2.0
-        y = (box[1] + box[3]) / 2.0
+        dw = 1 / size[0]
+        dh = 1 / size[1]
+        x = (box[0] + box[2]) / 2
+        y = (box[1] + box[3]) / 2
         w = box[2] - box[0]
         h = box[3] - box[1]
-        x = x*dw
-        w = w*dw
-        y = y*dh
-        h = h*dh
+        x = x * dw
+        w = w * dw
+        y = y * dh
+        h = h * dh
 
-        return (x,y,w,h)
+        return (x, y, w, h)
 
     def save_yolo_files(self, annotations, image_dir, label_dir) -> None:
         labels = [obj[0] for ann in self.y for obj in ann[1]]
