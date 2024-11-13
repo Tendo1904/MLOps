@@ -3,7 +3,7 @@ Lab2/data/images
 Lab2/data/face-mask-detection-yolo
 Lab2/__pycache__
 runs
-*.pt
+Lab2/*.pt
 *.zip
 env
 .vscode
