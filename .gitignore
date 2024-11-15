@@ -2,6 +2,8 @@ Lab2/data/annotations
 Lab2/data/images
 Lab2/data/face-mask-detection-yolo
 Lab2/__pycache__
+Lab3/*.jpg
+Lab3/*.onnx
 runs
 Lab2/*.pt
 *.zip
