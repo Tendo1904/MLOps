@@ -4,6 +4,7 @@ Lab2/data/face-mask-detection-yolo
 Lab2/__pycache__
 Lab3/*.jpg
 Lab3/*.onnx
+Lab3/__pycache__
 runs
 Lab2/*.pt
 *.zip
